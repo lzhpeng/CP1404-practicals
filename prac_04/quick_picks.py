@@ -10,12 +10,7 @@ def main():
         print("Error")
         numbers = int(input("How many quick picks:"))
     for i in range(numbers):
-        quick_picks = []
-        for j in range(LINE_NUMBERS):
-            numbers = random.randint(NUMBERS_MINIMUM, NUMBERS_MAXIMUM)
-            while numbers in quick_picks:
-                numbers = random.randint(NUMBERS_MINIMUM, NUMBERS_MAXIMUM)
-            quick_picks.append(numbers)
+        quick_picks = random.sample(range(NUMBERS_MINIMUM, NUMBERS_MAXIMUM + 1), LINE_NUMBERS)
         quick_picks.sort()
         print(" ".join(f"{number:2}" for number in quick_picks))
 

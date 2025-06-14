@@ -1,6 +1,4 @@
-numbers = []
-for i in range(5):
-    numbers = int(input("Number:"))
+numbers = [int(input("Number:")) for _ in range(5)]
 print(numbers)
 print("the first number is", numbers[0])
 print("the last number is", numbers[-1])
