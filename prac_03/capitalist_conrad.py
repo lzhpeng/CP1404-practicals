@@ -25,3 +25,4 @@ with open(FILENAME, 'w') as out_file:
         print(f"On day {day} price is ${price:,.2f}")
         out_file.write(f"On day {day} price is ${price:,.2f}\n")
         
+out_file.close()
