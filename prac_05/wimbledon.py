@@ -8,3 +8,15 @@ def main():
     records = load_records(FILENAME)
     champion_to_count, countries = process_records(records)
     display_results(champion_to_count, countries)
+
+def process_records(records):
+    """Create dictionary of champions and set of countries from records (list of lists)."""
+    champion_to_count = {}
+    countries = set()
+    for record in records:
+        countries.add(record[INDEX_COUNTRY])
+        try:
+            champion_to_count[record[INDEX_CHAMPION]] += 1
+        except KeyError:
+            champion_to_count[record[INDEX_CHAMPION]] = 1
+    return champion_to_count, countries
