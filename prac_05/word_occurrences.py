@@ -13,3 +13,6 @@ for word in words:
 words_sorted = sorted(word_count.keys())
 max_length = max(len(word) for word in words_sorted)
 print("Word Occurrences:")
+
+for word in words_sorted:
+    print(f"{word:<{max_length}} : {word_count[word]}")
