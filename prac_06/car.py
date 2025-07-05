@@ -12,3 +12,9 @@ class Car:
         Return car details as a string.
         """
         return f"{self.name}, fuel={self.fuel}, odometer={self._odometer}"
+
+    def add_fuel(self, amount):
+        """
+        Add fuel to the car.
+        """
+        self.fuel += amount
