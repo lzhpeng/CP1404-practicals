@@ -6,3 +6,9 @@ class Car:
         self.name = name
         self.fuel = fuel
         self._odometer = 0
+
+    def __str__(self):
+        """
+        Return car details as a string.
+        """
+        return f"{self.name}, fuel={self.fuel}, odometer={self._odometer}"
