@@ -1,3 +1,4 @@
+import csv
 from guitar import Guitar
 
 
@@ -15,3 +16,16 @@ def main():
 
     for language in languages:
         print(language)
+
+
+def using_csv():
+    """Alternative method using CSV reader"""
+    in_file = open('guitar.csv', 'r', newline='')
+    in_file.readline()  # Skip header
+    reader = csv.reader(in_file)
+    for row in reader:
+        print(row)
+    in_file.close()
+
+
+main()
