@@ -1,4 +1,5 @@
 import csv
+from collections import namedtuple
 from programming_language import ProgrammingLanguage
 
 
@@ -25,4 +26,18 @@ def using_csv():
     reader = csv.reader(in_file)
     for row in reader:
         print(row)
+    in_file.close()
+
+
+def using_namedtuple():
+    """Read CSV using namedtuple for structured data"""
+    in_file = open('languages.csv', 'r', newline='')
+    file_field_names = in_file.readline().strip().split(',')
+    print(file_field_names)
+    Language = namedtuple('Language', 'name, typing, reflection, year')
+    reader = csv.reader(in_file)
+
+    for row in reader:
+        language = Language._make(row)
+        print(repr(language))
     in_file.close()
