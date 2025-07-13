@@ -44,6 +44,7 @@ def using_namedtuple():
 
 
 def using_csv_namedtuple():
+
     """Read CSV using namedtuple with map function"""
     Language = namedtuple('Language', 'name, typing, reflection, year')
     in_file = open("languages.csv", "r")

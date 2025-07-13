@@ -3,6 +3,7 @@ VINTAGE_AGE = 50
 
 
 class Guitar:
+
     """Represents a guitar with name, year and cost"""
 
     def __init__(self, name="", year=0, cost=0):
