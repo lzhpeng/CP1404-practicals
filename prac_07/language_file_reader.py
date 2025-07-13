@@ -1,3 +1,4 @@
+import csv
 from programming_language import ProgrammingLanguage
 
 
@@ -15,3 +16,13 @@ def main():
 
     for language in languages:
         print(language)
+
+
+def using_csv():
+    """Read CSV using csv.reader"""
+    in_file = open('languages.csv', 'r', newline='')
+    in_file.readline()  # Skip header
+    reader = csv.reader(in_file)
+    for row in reader:
+        print(row)
+    in_file.close()
