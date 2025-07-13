@@ -1,8 +1,3 @@
-"""
-Project Management System
-Estimated time: 3 hours
-"""
-
 import datetime
 from project import Project
 
