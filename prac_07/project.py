@@ -1,3 +1,6 @@
+import datetime
+
+
 class Project:
     """Represents a project with name, date, priority, cost and completion"""
 
@@ -17,3 +20,23 @@ class Project:
     def __lt__(self, other):
         """Compare projects by priority for sorting"""
         return self.priority < other.priority
+
+    def is_completed(self):
+        """Check if project is 100% complete"""
+        return self.completion_percentage == 100
+
+    def get_date_object(self):
+        """Convert start_date string to datetime.date object"""
+        try:
+            return datetime.datetime.strptime(self.start_date, "%d/%m/%Y").date()
+        except ValueError:
+            return None
+
+    def is_after_date(self, date_string):
+        """Check if project starts after given date"""
+        try:
+            project_date = datetime.datetime.strptime(self.start_date, "%d/%m/%Y").date()
+            filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+            return project_date >= filter_date
+        except ValueError:
+            return False
