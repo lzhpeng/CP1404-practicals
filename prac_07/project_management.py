@@ -1,3 +1,8 @@
+"""
+Project Management System
+Estimated time: 3 hours
+"""
+
 import datetime
 from project import Project
 
@@ -90,3 +95,90 @@ def filter_projects_by_date(projects):
 
     except ValueError:
         print("Invalid date format. Please use dd/mm/yy")
+
+
+def add_new_project(projects):
+    """Add a new project with input validation"""
+    print("Let's add a new project")
+    name = input("Name: ")
+
+    while True:
+        start_date = input("Start date (dd/mm/yy): ")
+        try:
+            datetime.datetime.strptime(start_date, "%d/%m/%Y")
+            break
+        except ValueError:
+            print("Invalid date format. Please use dd/mm/yy")
+
+    while True:
+        try:
+            priority = int(input("Priority: "))
+            break
+        except ValueError:
+            print("Please enter a valid number")
+
+    while True:
+        try:
+            cost_estimate = float(input("Cost estimate: $"))
+            break
+        except ValueError:
+            print("Please enter a valid number")
+
+    while True:
+        try:
+            completion_percentage = int(input("Percent complete: "))
+            if 0 <= completion_percentage <= 100:
+                break
+            else:
+                print("Please enter a percentage between 0 and 100")
+        except ValueError:
+            print("Please enter a valid number")
+
+    new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(new_project)
+    print("Project added successfully!")
+
+
+def update_project(projects):
+    """Update an existing project's completion and priority"""
+    if not projects:
+        print("No projects to update")
+        return
+
+    # Display projects with indices
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+    while True:
+        try:
+            choice = int(input("Project choice: "))
+            if 0 <= choice < len(projects):
+                break
+            else:
+                print("Invalid choice")
+        except ValueError:
+            print("Please enter a valid number")
+
+    project = projects[choice]
+    print(project)
+
+    # Get new completion percentage
+    new_percentage = input("New Percentage: ")
+    if new_percentage.strip():
+        try:
+            percentage = int(new_percentage)
+            if 0 <= percentage <= 100:
+                project.completion_percentage = percentage
+            else:
+                print("Percentage must be between 0 and 100")
+        except ValueError:
+            print("Invalid percentage")
+
+    # Get new priority
+    new_priority = input("New Priority: ")
+    if new_priority.strip():
+        try:
+            priority = int(new_priority)
+            project.priority = priority
+        except ValueError:
+            print("Invalid priority")
