@@ -1,3 +1,4 @@
+import datetime
 from project import Project
 
 
@@ -40,3 +41,52 @@ def save_projects(filename, projects):
         print(f"Saved {len(projects)} projects to {filename}")
     except Exception as e:
         print(f"Error saving projects: {e}")
+
+
+def display_projects(projects):
+    """Display projects grouped by completion status"""
+    if not projects:
+        print("No projects to display")
+        return
+
+    # Separate completed and incomplete projects
+    incomplete_projects = [p for p in projects if not p.is_completed()]
+    completed_projects = [p for p in projects if p.is_completed()]
+
+    # Sort by priority
+    incomplete_projects.sort()
+    completed_projects.sort()
+
+    print("Incomplete projects: ")
+    for project in incomplete_projects:
+        print(f"  {project}")
+
+    print("Completed projects: ")
+    for project in completed_projects:
+        print(f"  {project}")
+
+
+def filter_projects_by_date(projects):
+    """Filter projects by start date"""
+    if not projects:
+        print("No projects to filter")
+        return
+
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    try:
+        filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+        filtered_projects = []
+
+        for project in projects:
+            project_date = project.get_date_object()
+            if project_date and project_date >= filter_date:
+                filtered_projects.append(project)
+
+        # Sort by date
+        filtered_projects.sort(key=lambda x: x.get_date_object())
+
+        for project in filtered_projects:
+            print(project)
+
+    except ValueError:
+        print("Invalid date format. Please use dd/mm/yy")
