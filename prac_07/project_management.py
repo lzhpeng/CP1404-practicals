@@ -1,3 +1,8 @@
+"""
+Project Management System
+Estimated time: 3 hours
+"""
+
 import datetime
 from project import Project
 
@@ -177,3 +182,52 @@ def update_project(projects):
             project.priority = priority
         except ValueError:
             print("Invalid priority")
+
+
+def main():
+    """Main program with menu interface"""
+    print("Welcome to Pythonic Project Management")
+
+    # Load projects from default file
+    projects = load_projects("projects.txt")
+
+    while True:
+        print()
+        print("- (L)oad projects")
+        print("- (S)ave projects")
+        print("- (D)isplay projects")
+        print("- (F)ilter projects by date")
+        print("- (A)dd new project")
+        print("- (U)pdate project")
+        print("- (Q)uit")
+
+        choice = input(">>> ").lower()
+
+        if choice == 'l':
+            filename = input("Enter filename to load from: ")
+            projects = load_projects(filename)
+        elif choice == 's':
+            filename = input("Enter filename to save to: ")
+            save_projects(filename, projects)
+        elif choice == 'd':
+            display_projects(projects)
+        elif choice == 'f':
+            filter_projects_by_date(projects)
+        elif choice == 'a':
+            add_new_project(projects)
+        elif choice == 'u':
+            update_project(projects)
+        elif choice == 'q':
+            save_choice = input("Would you like to save to projects.txt? ").lower()
+            if save_choice in ['y', 'yes']:
+                save_projects("projects.txt", projects)
+            else:
+                print("no, I think not.")
+            print("Thank you for using custom-built project management software.")
+            break
+        else:
+            print("Invalid choice")
+
+
+if __name__ == "__main__":
+    main()
