@@ -14,6 +14,7 @@ class DynamicLabelsApp(App):
         return super().build()
 
     def on_start(self):
+        """Add a Label for each name to the BoxLayout with id 'main'."""
         for name in self.names:
             label = Label(text=name)
             self.root.ids.main.add_widget(label)
