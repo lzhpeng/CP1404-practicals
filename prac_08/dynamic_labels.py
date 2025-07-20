@@ -10,6 +10,7 @@ class DynamicLabelsApp(App):
         self.names = ["Alice", "Bob", "Charlie", "Diana"]
 
     def build(self):
+        """Let Kivy auto-load the kv file."""
         return super().build()
 
     def on_start(self):
