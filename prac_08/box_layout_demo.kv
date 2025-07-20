@@ -1,0 +1,12 @@
+BoxLayout:
+    orientation: 'vertical'
+    TextInput:
+        id: name_input
+        hint_text: "Enter your name"
+    BoxLayout:
+        Button:
+            text: 'Submit'
+            on_release: app.submit_name()
+        Button:
+            text: 'Clear'
+            on_release: app.clear_name()
