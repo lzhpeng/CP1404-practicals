@@ -19,6 +19,7 @@ class BoxLayoutDemo(App):
             print(greeting)
 
     def clear_name(self):
+        """Clear the name input field."""
         name_input = self.root.ids.name_input
         name_input.text = ""
 
