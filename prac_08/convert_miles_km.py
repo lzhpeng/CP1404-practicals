@@ -13,6 +13,7 @@ class MilesConverterApp(App):
         return self.root
 
     def handle_calculate(self):
+        """Calculate and display the result in kilometres."""
         value = self.get_validated_miles()
         result = value * MILES_TO_KM
         self.root.ids.output_label.text = str(result)
@@ -28,6 +29,5 @@ class MilesConverterApp(App):
             return value
         except ValueError:
             return 0
-
 
 MilesConverterApp().run()
