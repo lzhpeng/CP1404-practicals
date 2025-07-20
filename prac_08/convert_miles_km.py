@@ -1,14 +1,8 @@
-"""
-Miles to Kilometres Converter App
-A simple Kivy app to convert miles to kilometres.
-"""
-
 from kivy.app import App
 from kivy.lang import Builder
 
-__author__ = 'Lindsay Ward'
-
 MILES_TO_KM = 1.60934
+
 
 class MilesConverterApp(App):
     """Kivy App that converts miles to kilometres."""
@@ -37,5 +31,6 @@ class MilesConverterApp(App):
             return value
         except ValueError:
             return 0
+
 
 MilesConverterApp().run()

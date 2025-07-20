@@ -1,8 +1,3 @@
-"""
-Squaring App
-A simple Kivy app to square a number entered by the user.
-"""
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
