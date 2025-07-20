@@ -13,6 +13,7 @@ class SquareNumberApp(App):
         return self.root
 
     def handle_calculate(self, value):
+        """Calculate the square of the input value and display it."""
         try:
             result = int(value) ** 2
             self.root.ids.output_label.text = str(result)
