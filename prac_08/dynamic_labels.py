@@ -10,11 +10,9 @@ class DynamicLabelsApp(App):
         self.names = ["Alice", "Bob", "Charlie", "Diana"]
 
     def build(self):
-        """Let Kivy auto-load the kv file."""
         return super().build()
 
     def on_start(self):
-        """Add a Label for each name to the BoxLayout with id 'main'."""
         for name in self.names:
             label = Label(text=name)
             self.root.ids.main.add_widget(label)
