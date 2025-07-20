@@ -25,6 +25,7 @@ class MilesConverterApp(App):
         self.handle_calculate()
 
     def get_validated_miles(self):
+        """Get the miles value from input, return 0 if invalid."""
         try:
             value = float(self.root.ids.input_miles.text)
             return value
