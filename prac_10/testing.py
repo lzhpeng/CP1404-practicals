@@ -81,3 +81,6 @@ def run_tests():
 
 
 run_tests()
+
+# TODO 3: Enabled doctest execution
+doctest.testmod()
