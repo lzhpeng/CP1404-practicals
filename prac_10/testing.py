@@ -1,15 +1,37 @@
+"""
+CP1404/CP5632 Practical
+Testing code using assert and doctest
+"""
+
 import doctest
 from prac_06.car import Car
 
 
 def repeat_string(s, n):
-    """Repeat string s, n times, with spaces in between."""
+    """
+    Repeat string s, n times, with spaces in between.
+    
+    Args:
+        s (str): The string to repeat
+        n (int): Number of times to repeat the string
+        
+    Returns:
+        str: The repeated string with spaces between each repetition
+    """
     return " ".join([s] * n)
 
 
 def is_long_word(word, length=5):
     """
-    Determine if the word is as long or longer than the length passed in
+    Determine if the word is as long or longer than the length passed in.
+    
+    Args:
+        word (str): The word to check
+        length (int): The minimum length to compare against (default: 5)
+        
+    Returns:
+        bool: True if word length is >= length, False otherwise
+        
     >>> is_long_word("not")
     False
     >>> is_long_word("supercalifrag")
@@ -17,61 +39,48 @@ def is_long_word(word, length=5):
     >>> is_long_word("Python", 6)
     True
     """
+    # TODO 4: Fixed - Changed from > to >= to match test expectations
     return len(word) >= length
+
+
+def sentence_format(phrase):
+    """
+    Format a phrase as a sentence, starting with a capital and ending with a single full stop.
+    
+    Args:
+        phrase (str): The phrase to format
+        
+    Returns:
+        str: The formatted sentence
+        
+    >>> sentence_format('hello')
+    'Hello.'
+    >>> sentence_format('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> sentence_format('python programming')
+    'Python programming.'
+    """
+    # TODO 5: Created function to format phrases as sentences
+    phrase = phrase.rstrip('.!?')
+    return phrase.capitalize() + '.'
 
 
 def run_tests():
     """Run the tests on the functions."""
-    # assert test with no message - used to see if the function works properly
     assert repeat_string("Python", 1) == "Python"
-    # the test below should fail
     assert repeat_string("hi", 2) == "hi hi"
 
-    # assert test with custom message,
-    # used to see if Car's init method sets the odometer correctly
-    # this should pass (no output)
     car = Car()
     assert car._odometer == 0, "Car does not set odometer correctly"
 
-    # 2. write assert statements to show if Car sets the fuel correctly
-    # Note that Car's __init__ function sets the fuel in one of two ways:
-    # using the value passed in or the default
-    # You should test both of these
     car = Car(fuel=10)
-    assert car.fuel == 10
-
-    car = Car()
-    assert car.fuel == 0
-
-
-# 5. Write and test a function to format a phrase as a sentence,
-# starting with a capital and ending with a single full stop.
-# Important: start with a function header and just use pass as the body
-# then add doctests for 3 tests:
-#   'hello' -> 'Hello.'
-#   'It is an ex parrot.' -> 'It is an ex parrot.'
-# and one more that you decide is a useful test.
-def phrase_to_sentence(phrase):
-    """
-    Format a phrase as a sentence, starting with a capital and ending with a .
-    >>> phrase_to_sentence('hello')
-    'Hello.'
-    >>> phrase_to_sentence('It is an ex parrot.')
-    'It is an ex parrot.'
-    >>> phrase_to_sentence('This subject rocks')
-    'This subject rocks.'
-    """
-    # capitalise the first letter
-    sentence = phrase.capitalize()
-    # add the full stop, but only if we need to
-    if sentence[-1] != '.':
-        # sentence += '.'
-        # f-strings are more efficient than concatenation +
-        sentence = f"{sentence}."
-    return sentence
+    assert car.fuel == 10, "Car does not set fuel correctly when value is passed in"
+    
+    car_default = Car()
+    assert car_default.fuel == 0, "Car does not set fuel correctly with default value"
 
 
 run_tests()
 
-# 3. Uncomment the following line and run the doctests
+# TODO 3: Enabled doctest execution
 doctest.testmod()
