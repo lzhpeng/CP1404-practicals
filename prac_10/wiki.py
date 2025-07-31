@@ -3,9 +3,6 @@ Wikipedia API & Python Library
 A program that uses the Wikipedia API to search and display page information
 """
 
-import wikipedia
-
-
 def search_wikipedia():
     """Search Wikipedia pages based on user input"""
     print("Wikipedia Search Tool")
